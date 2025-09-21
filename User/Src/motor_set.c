@@ -37,3 +37,16 @@ void Motor_SetRPM(TIM_HandleTypeDef *htim, uint32_t channel, float rpm) {
     float throttle_percent = (rpm / RPM_MAX) * 100.0f;
     Motor_SetThrottle(htim, channel, throttle_percent);
 }
+
+void ESC_Calibrate(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t calibrate) {
+    Motor_Init();
+    if (calibrate) {
+        // Set max throttle (2000 µs)
+        Motor_SendPulse(htim, channel, (uint32_t) (D_MAX * (ARR + 1)));
+        HAL_Delay(ESC_CALIB_DELAY);
+
+        // Set min throttle (1000 µs)
+        Motor_SendPulse(htim, channel, (uint32_t) (D_MIN * (ARR + 1)));
+        HAL_Delay(ESC_CALIB_DELAY);
+    }
+}

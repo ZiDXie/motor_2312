@@ -24,7 +24,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "motor_init.h"
 #include "motor_set.h"
 #include "stdio.h"
 /* USER CODE END Includes */
