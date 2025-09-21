@@ -19,7 +19,7 @@
 #define PSC 167
 #define ARR 2499
 #define MOTOR_DELAY 500
-#define ESC_CALIB_DELAY 500
+#define ESC_CALIB_DELAY 2000
 
 /// @brief Initialize the motor by starting PWM on TIM1 Channel 1 and adding a delay.
 /// TIM1 Channel 1 is used to control the motor speed.
