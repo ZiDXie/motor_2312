@@ -94,7 +94,7 @@ int main(void) {
     MX_TIM1_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
-    Motor_Init();
+    ESC_Calibrate(&htim1, TIM_CHANNEL_1, 1);
     float percent = 0.0f;
     /* USER CODE END 2 */
 

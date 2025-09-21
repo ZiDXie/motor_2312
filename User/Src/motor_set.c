@@ -2,8 +2,13 @@
 // Created by xie on 2025/9/20.
 //
 #include "motor_set.h"
-
 #include <stdio.h>
+
+void Motor_Init() {
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+    HAL_Delay(MOTOR_DELAY);
+    printf("Motor init success\r\n");
+}
 
 void Motor_SendPulse(TIM_HandleTypeDef *htim, uint32_t Channel, uint16_t pulse) {
     __HAL_TIM_SET_COMPARE(htim, Channel, pulse);
@@ -48,5 +53,6 @@ void ESC_Calibrate(TIM_HandleTypeDef *htim, uint32_t channel, uint8_t calibrate)
         // Set min throttle (1000 µs)
         Motor_SendPulse(htim, channel, (uint32_t) (D_MIN * (ARR + 1)));
         HAL_Delay(ESC_CALIB_DELAY);
+        printf("Motor ESC Calibrate Success\r\n");
     }
 }

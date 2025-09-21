@@ -19,16 +19,12 @@
 #define PSC 167
 #define ARR 2499
 #define MOTOR_DELAY 500
-#define ESC_CALIB_DELAY 2000
+#define ESC_CALIB_DELAY 500
 
 /// @brief Initialize the motor by starting PWM on TIM1 Channel 1 and adding a delay.
 /// TIM1 Channel 1 is used to control the motor speed.
 /// Motor init pwm pulse is set to 1000
-void Motor_Init() {
-    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-    HAL_Delay(MOTOR_DELAY);
-    printf("Motor init success\r\n");
-}
+void Motor_Init();
 
 /// @brief  Send pulse to motor to control speed
 /// @param htim TIMx
